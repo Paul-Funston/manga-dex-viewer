@@ -1,28 +1,15 @@
 import { fetchManga, fetchCover } from "../api/fetchManga";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import Figure from 'react-bootstrap/Figure';
-
-
-
-const getTitle = (manga) => {
-  return manga.attributes.title.en; 
- }
-
- const getCover = (manga) => {
-  const cover = manga.relationships.find(r => r.type ==="cover_art");
-  const fileName = cover.attributes.fileName;
-  
-  return `https://uploads.mangadex.org/covers/${manga.id}/${fileName}`;
- }
- 
+import Image from 'react-bootstrap/Image';
+import { getTitle, getCover } from "../util";
 
 
 function Catalog() {
 
   const [mangaList, setMangaList] = useState([]);
   const [isInitialized, setIsInitialized] = useState(false);
+  const navigate = useNavigate();
   
   
   const initializeMangaList = () => {
@@ -36,24 +23,22 @@ function Catalog() {
     initializeMangaList()
   }
 
+  const handleClickPoster = (id) => {
+    navigate(`/Details/${id}`)
+  }
   return (
   
     
     <section>
       <div className="container">
-        <div className="row">
+        <div className="row row-fluid">
         {mangaList.map(manga => {
         return (
-        <div className="col-3 text-truncate" key={manga.id}>
-          <Figure>
-            <Figure.Image 
-              src={getCover(manga)}
-              
-            />
-            <Figure.Caption>
-             {getTitle(manga)}
-            </Figure.Caption>
-          </Figure>
+        <div className="col-lg-3 col-sm-6 text-wrap" key={manga.id} onClick={() => {handleClickPoster(manga.id)}}>
+          <div className="d-flex justify-content-center align-items-center bg-dark p-1" style={{height: '160px'}}>
+            <Image className="h-100" src={getCover(manga)} rounded fluid/>
+          </div>
+          <p className="text-center">{getTitle(manga)}</p>
         </div>
         )
       })}
