@@ -13,6 +13,7 @@ const getTitle = (manga) => {
  const getCover = (manga) => {
   const cover = manga.relationships.find(r => r.type ==="cover_art");
   const fileName = cover.attributes.fileName;
+  
   return `https://uploads.mangadex.org/covers/${manga.id}/${fileName}`;
  }
  
@@ -40,14 +41,14 @@ function Catalog() {
     
     <section>
       <div className="container">
-        <div className="row row-cols-4">
+        <div className="row">
         {mangaList.map(manga => {
         return (
         <div className="col-3 text-truncate" key={manga.id}>
           <Figure>
             <Figure.Image 
               src={getCover(manga)}
-              width={180}
+              
             />
             <Figure.Caption>
              {getTitle(manga)}

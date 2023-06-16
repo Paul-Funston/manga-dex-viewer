@@ -1,7 +1,14 @@
+import { Link } from "react-router-dom"
 
 function Header() {
   return (
-    <div>Header</div>
+    <nav className="navbar container">
+      <Link className="navbar-brand" to="/">
+        <img src={process.env.PUBLIC_URL + '/logo.png'} height={'30px'} />
+         {" MangaDex Viewer"}
+      </Link>
+
+    </nav>
   )
 }
 
