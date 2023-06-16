@@ -13,6 +13,6 @@ export function fetchManga() {
 }
 
 export function getManga(id) {
-  const url = `https://api.mangadex.org/manga/${id}?includes%5B%5D=cover_art`
+  const url = `https://api.mangadex.org/manga/${id}?includes%5B%5D=cover_art&includes%5B%5D=author&includes%5B%5Dartist`
   return axios.get(url).then(response => response.data);
 }
