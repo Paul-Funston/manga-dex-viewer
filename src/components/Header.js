@@ -4,7 +4,7 @@ function Header() {
   return (
     <nav className="navbar container">
       <Link className="navbar-brand" to="/">
-        <img src={process.env.PUBLIC_URL + '/logo.png'} height={'30px'} />
+        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="logo" height={'30px'} />
          {" MangaDex Viewer"}
       </Link>
 

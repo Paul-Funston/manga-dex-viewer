@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { getManga } from '../api/fetchManga';
 import {useState, useEffect} from 'react';
-import { getTitle, getCover, getAltTitles, getDescription, getAuthor, getTags} from '../util';
+import { getTitle, getCover, getAltTitles, getDescription, getAuthor} from '../util';
 import Image from 'react-bootstrap/Image';
 import { Helmet } from 'react-helmet';
 
@@ -11,11 +11,13 @@ function Details() {
   const { id } = useParams();
   const [manga, setManga] = useState({});
 
-  const handleGetManga = () => {
-    getManga(id).then(response=> {setManga(response.data)}).finally(console.table(manga));
-  }
+  
 
   useEffect(() => {
+    const handleGetManga = () => {
+      getManga(id).then(response=> {setManga(response.data)}).finally(console.table(manga));
+    }
+
     handleGetManga();
   }, [])
   

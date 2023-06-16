@@ -49,13 +49,13 @@ export function getDescription(manga){
   } catch (error) {}
 }
 
-export function getTags(manga){
-  try{
-    const {tags} = manga.attributes;
-    return tags;
+// export function getTags(manga){
+//   try{
+//     const {tags} = manga.attributes;
+//     return tags;
 
-  } catch (error) {return []}
-}
+//   } catch (error) {return []}
+// }
 
 /*
 export function getX(manga){

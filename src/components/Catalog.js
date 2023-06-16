@@ -1,4 +1,4 @@
-import { fetchManga, fetchCover } from "../api/fetchManga";
+import { fetchManga } from "../api/fetchManga";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getTitle, getCover } from "../util";
